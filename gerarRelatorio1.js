@@ -247,13 +247,6 @@ function gerarPDF() {
 
     doc.text("Observações: " + document.getElementById("obsriscos").value, 20, 260);
 
-    //controle de EPI
-    if (controleEPI === 'controlesim') {
-        doc.text('Existe controle de fichas de EPI', 20, 280);
-    } else {
-        doc.text('Não existe controle de fichas de EPI', 20, 280);
-    }
-
     doc.addPage();
 
     doc.line(linhaInicio, linhaPosicao, linhaFim, linhaPosicao);
@@ -261,30 +254,38 @@ function gerarPDF() {
     doc.line(linhaInicio, linhaPosicao, linhaInicio, doc.internal.pageSize.height - linhaPosicao);
     doc.line(linhaFim, linhaPosicao, linhaFim, doc.internal.pageSize.height - linhaPosicao);     
 
+
+    //controle de EPI
+    if (controleEPI === 'controlesim') {
+        doc.text('Existe controle de fichas de EPI', 20, 20);
+    } else {
+        doc.text('Não existe controle de fichas de EPI', 20, 20);
+    }
+
     //Rota de fuga
     if (rotadefuga === 'rotadefugasim') {
-        doc.text('Existe rota fuga', 20, 20);
+        doc.text('Existe rota fuga', 20, 30);
     } else {
-        doc.text('Não existe rota fuga', 20, 20);
+        doc.text('Não existe rota fuga', 20, 30);
     }
     
     //iluminação de emergencia
     if (iluminacaoemerg === 'iluminacaoemergsim') {
-        doc.text('Existe iluminação de emergência', 20, 30);
+        doc.text('Existe iluminação de emergência', 20, 40);
     } else {
-        doc.text('Não existe iluminação de emergência', 20, 30);
+        doc.text('Não existe iluminação de emergência', 20, 40);
     }
 
     //Extintores
     if (extintores === 'extintoressim') {
-        doc.text('Existe extintores', 20, 40);
+        doc.text('Existe extintores', 20, 50);
     } else {
-        doc.text('Não existe extintores', 20, 40);
+        doc.text('Não existe extintores', 20, 50);
     }
 
-    var descAtividades = "                       ATIVIDADES POR FUNCIONÁRIOS / FUNÇÃO";    doc.setFont("Arial");
+    var descAtividades = "                                       ATIVIDADES POR FUNCIONÁRIOS / FUNÇÃO";    doc.setFont("Arial");
 
-    doc.text(descAtividades, 20, 60)
+    doc.text(descAtividades, 20, 70)
     // Adiciona os campos preenchidos ao PDF
     for (var i = 1; i < contadorCampos; i++) {
         var nome = document.getElementById("nome" + i).value;
@@ -292,7 +293,7 @@ function gerarPDF() {
         var qtd = parseFloat(document.getElementById("qtd" + i).value);
 
         if (!isNaN(qtd)) {
-        doc.text(nome + " - " + atividade + " - " + qtd, 20, 60 + i * 10);
+        doc.text(nome + " - " + atividade + " - " + qtd, 20, 70 + i * 10);
         }
     }
 
