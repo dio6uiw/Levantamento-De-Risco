@@ -85,6 +85,16 @@ button{
     font-weight: bold;
 }
 
+.adccampo #gerador{
+    width: 350px;
+    height: 40px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: blue;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
 #campos input{
     width: 340px;
     height: 30px;
