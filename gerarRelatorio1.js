@@ -279,9 +279,14 @@ function gerarPDF() {
     //Extintores
     if (extintores === 'extintoressim') {
         doc.text('Existe extintores', 20, 50);
+        doc.text('do tipo: ' + document.getElementById("tipoextintor").value, 50, 50);
     } else {
         doc.text('Não existe extintores', 20, 50);
     }
+
+    //Placa de sinalização a ser adequada
+    doc.text('Sina: ' + document.getElementById("tipoplacasinalizacao").value, 50, 50);
+    
 
     var descAtividades = "                                       ATIVIDADES POR FUNCIONÁRIOS / FUNÇÃO";    doc.setFont("Arial");
 
