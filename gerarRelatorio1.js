@@ -73,6 +73,8 @@ function gerarPDF() {
 
     var extintores = document.querySelector('input[name="extintores"]:checked').value;
 
+    var empresa = document.getElementById('empresa').value;
+
     doc.line(linhaInicio, linhaPosicao, linhaFim, linhaPosicao);
     doc.line(linhaInicio, doc.internal.pageSize.height - linhaPosicao, linhaFim, doc.internal.pageSize.height - linhaPosicao);
     doc.line(linhaInicio, linhaPosicao, linhaInicio, doc.internal.pageSize.height - linhaPosicao);
@@ -285,12 +287,12 @@ function gerarPDF() {
     }
 
     //Placa de sinalização a ser adequada
-    doc.text('Sina: ' + document.getElementById("tipoplacasinalizacao").value, 50, 50);
+    doc.text('Medidas a serem adotadas: ' + document.getElementById("tipoplacasinalizacao").value, 20, 60);
     
 
     var descAtividades = "                                       ATIVIDADES POR FUNCIONÁRIOS / FUNÇÃO";    doc.setFont("Arial");
 
-    doc.text(descAtividades, 20, 70)
+    doc.text(descAtividades, 20, 80)
     // Adiciona os campos preenchidos ao PDF
     for (var i = 1; i < contadorCampos; i++) {
         var nome = document.getElementById("nome" + i).value;
@@ -298,10 +300,13 @@ function gerarPDF() {
         var qtd = parseFloat(document.getElementById("qtd" + i).value);
 
         if (!isNaN(qtd)) {
-        doc.text(nome + " - " + atividade + " - " + qtd, 20, 70 + i * 10);
+        doc.text(nome + " - " + atividade + " - " + qtd, 20, 80 + i * 10);
         }
     }
 
+    // Concatena o nome do formulário com o nome inserido no campo "nome"
+    var nomeArquivo = 'levantamento_' + empresa + '.pdf';
+
     // Salvar o PDF
-    doc.save('levantamento.pdf');
+    doc.save(nomeArquivo);
     }
